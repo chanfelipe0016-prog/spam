@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Limpieza</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <div id="stage" class="stage">
+      <!-- Pon aquí tu imagen con el nombre imagen.jpg (junto a este archivo) -->
+      <img id="art" src="imagen.jpg" alt="Ilustración" draggable="false">
+      <div id="ads"></div>
+    </div>
+
+    <div class="controls">
+      <button id="start" class="btn-start">▶ Start</button>
+      <p id="counter" class="counter" hidden></p>
+    </div>
+  </main>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">Limpieza completa</h2>
+      <p>Disfruta la vista…</p>
+      <button id="accept" class="btn-start">Aceptar</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

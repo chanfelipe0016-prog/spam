@@ -1,0 +1,174 @@
+:root {
+  --bg: #0f0f12;
+  --ink: #f4f1ea;
+  --accent: #e63946;
+  --ratio: 940 / 1280;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 12px;
+}
+
+/* ---------- Escenario ---------- */
+.stage {
+  position: relative;
+  aspect-ratio: var(--ratio);
+  width: min(100%, calc((100dvh - 110px) * 0.734));
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  container-type: inline-size;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .6);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.stage > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+#ads { position: absolute; inset: 0; }
+
+/* ---------- Controles ---------- */
+.controls {
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-start {
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 12px 34px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(230, 57, 70, .45);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-start:hover { transform: translateY(-1px); }
+.btn-start:active { transform: scale(.97); }
+
+.counter { margin: 0; font-size: .95rem; opacity: .85; }
+
+/* ---------- Anuncios ---------- */
+.ad {
+  position: absolute;
+  font-size: 2.3cqw;
+  line-height: 1.25;
+  border-radius: 1.2cqw;
+  box-shadow: 0 .5cqw 1.8cqw rgba(0, 0, 0, .45);
+  cursor: default;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.2cqw 1.6cqw;
+  transition: transform .28s cubic-bezier(.5, -0.4, .8, .4), opacity .28s ease;
+}
+.ad.live { cursor: pointer; }
+.ad.live:active { filter: brightness(.9); }
+.ad.out { transform: scale(.4) rotate(var(--rot, 6deg)) translateY(-4cqw); opacity: 0; pointer-events: none; }
+
+.ad b { display: block; }
+.ad small { font-size: .78em; opacity: .8; }
+.ad .x {
+  position: absolute; top: .5cqw; right: .9cqw;
+  font-size: 1.9cqw; opacity: .55; font-weight: 700;
+}
+
+/* tipos */
+.cookie  { background: #fff; color: #222; border: .25cqw solid #ccc; }
+.cookie .btn { margin-top: .8cqw; align-self: flex-start; background: #2a7de1; color: #fff; padding: .5cqw 1.6cqw; border-radius: .8cqw; font-weight: 700; }
+
+.notif   { background: rgba(32, 34, 40, .96); color: #fff; flex-direction: row; align-items: center; gap: 1.4cqw; }
+.notif .ico { flex: none; width: 5.2cqw; height: 5.2cqw; border-radius: 1.2cqw; display: grid; place-items: center; font-size: 3cqw; background: #3a86ff; }
+.notif .txt { min-width: 0; }
+.notif .txt b { font-size: 1em; }
+.notif .badge { position: absolute; top: .8cqw; right: 1.6cqw; background: #e63946; border-radius: 99px; padding: 0 1.2cqw; font-size: 1.8cqw; font-weight: 700; }
+
+.win     { background: linear-gradient(135deg, #ff4ecd, #ffb800 55%, #00e0ff); color: #1b1b1b; text-align: center; font-weight: 800; }
+.win b   { font-size: 1.7em; text-transform: uppercase; }
+.win .btn { margin: .8cqw auto 0; background: #111; color: #fff; padding: .6cqw 2cqw; border-radius: 99px; font-size: .9em; }
+
+.banner  { background: #ffe600; color: #111; text-align: center; border: .4cqw dashed #e63946; font-weight: 800; }
+.banner b { font-size: 1.9em; color: #e63946; }
+
+.sub     { background: #ff0033; color: #fff; text-align: center; font-weight: 800; }
+.sub b   { font-size: 1.5em; }
+
+.like    { background: #ffd1e8; color: #b0005a; text-align: center; font-weight: 800; }
+.like b  { font-size: 1.8em; }
+
+.update  { background: #eef4ff; color: #123; border: .25cqw solid #8bb4ff; }
+.update .bar { height: 1.4cqw; border-radius: 9px; background: #cfe0ff; margin-top: .8cqw; overflow: hidden; }
+.update .bar i { display: block; height: 100%; width: 38%; background: #2a7de1; }
+
+.battery { background: #1c1c1c; color: #ffd60a; text-align: center; font-weight: 700; border: .3cqw solid #ffd60a; }
+
+.captcha { background: #fafafa; color: #222; border: .25cqw solid #bbb; flex-direction: row; align-items: center; gap: 1.4cqw; }
+.captcha .box { width: 4.2cqw; height: 4.2cqw; border: .35cqw solid #777; border-radius: .6cqw; background: #fff; flex: none; }
+
+.chat    { background: #25d366; color: #052; font-weight: 700; flex-direction: row; align-items: center; gap: 1.2cqw; }
+.chat .dot { width: 3.6cqw; height: 3.6cqw; border-radius: 50%; background: #fff; color: #e63946; display: grid; place-items: center; font-weight: 800; flex: none; }
+
+.vpn     { background: #3b0a45; color: #fff; text-align: center; border: .3cqw solid #d96bff; }
+.vpn b   { color: #ff9bf0; }
+
+.age     { background: #111; color: #fff; text-align: center; border: .3cqw solid #fff; }
+.age .btn { margin: .8cqw auto 0; background: #fff; color: #111; padding: .4cqw 1.6cqw; border-radius: .8cqw; font-weight: 800; }
+
+.promo   { background: #0a7d4f; color: #fff; text-align: center; font-weight: 700; }
+.promo b { font-size: 1.6em; }
+
+/* ---------- Modal ---------- */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, .55);
+  display: grid; place-items: center;
+  padding: 20px;
+  animation: fade .4s ease;
+  z-index: 10;
+}
+.modal[hidden] { display: none; }
+.modal-card {
+  background: #fff; color: #17171a;
+  border-radius: 16px;
+  padding: 28px 26px 24px;
+  width: min(92vw, 380px);
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+  animation: pop .45s cubic-bezier(.2, 1.3, .4, 1);
+}
+.modal-card h2 { margin: 0 0 6px; font-size: 1.6rem; }
+.modal-card p  { margin: 0 0 20px; font-size: 1.05rem; opacity: .75; }
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop  { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
